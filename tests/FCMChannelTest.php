@@ -5,7 +5,7 @@ namespace NotificationChannels\FCM\Test;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use LaravelFCM\Sender\FCMSender;
-use Illuminate\Events\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Notifiable;
 use NotificationChannels\FCM\FCMChannel;
 use NotificationChannels\FCM\FCMMessage;
@@ -39,7 +39,7 @@ class FCMChannelTest extends TestCase
         $message->to($to);
         $args = $message->getArgs();
         $this->sender->shouldReceive('sendTo')->with(...$args)->andReturn(Mockery::mock(DownstreamResponse::class));
-        $this->events->shouldReceive('fire')->with(Mockery::type(MessageWasSended::class));
+        $this->events->shouldReceive('dispatch')->with(Mockery::type(MessageWasSended::class));
         $result = $this->channel->send($notifiable, $notification);
         $this->assertInstanceOf(DownstreamResponse::class, $result);
     }

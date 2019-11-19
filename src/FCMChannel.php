@@ -3,7 +3,7 @@
 namespace NotificationChannels\FCM;
 
 use LaravelFCM\Sender\FCMSender;
-use Illuminate\Events\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
 
@@ -15,7 +15,7 @@ class FCMChannel
     protected $sender;
 
     /**
-     * @var \Illuminate\Events\Dispatcher
+     * @var \Illuminate\Contracts\Events\Dispatcher
      */
     protected $events;
 
@@ -23,6 +23,7 @@ class FCMChannel
      * Constructor.
      *
      * @param \LaravelFCM\Sender\FCMSender $sender
+     * @param \Illuminate\Contracts\Events\Dispatcher $events
      */
     public function __construct(FCMSender $sender, Dispatcher $events)
     {
@@ -62,7 +63,7 @@ class FCMChannel
 
         $response = $this->sender->{$method}(...$message->getArgs());
 
-        $this->events->fire(new MessageWasSended($response, $notifiable));
+        $this->events->dispatch(new MessageWasSended($response, $notifiable));
 
         return $response;
     }
