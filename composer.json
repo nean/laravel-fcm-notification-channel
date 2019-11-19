@@ -1,32 +1,42 @@
 {
-    "name": "enniel/laravel-fcm-notification-channel",
-    "type": "library",
+    "name": "nean/laravel-fcm-notification-channel",
     "description": "Firebase Cloud Messages Notification Driver",
     "keywords": [
         "fcm",
         "firebase"
     ],
-    "homepage": "https://github.com/enniel/laravel-fcm-notification-channel",
+    "homepage": "https://github.com/nean/laravel-fcm-notification-channel",
     "license": "MIT",
-    "authors": [{
-        "name": "Evgeni Razumov",
-        "email": "razumov.evgeni@gmail.com"
-    }],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Evgeni Razumov",
+            "email": "razumov.evgeni@gmail.com"
+        },
+        {
+            "name": "Neranjen",
+            "email": "mvneranjen@gmail.com"
+        }
+    ],
     "require": {
-        "php": ">=5.5.9",
-        "brozot/laravel-fcm": "~1.2.5",
-        "illuminate/notifications": "~5.3",
-        "illuminate/queue": "~5.1",
-        "illuminate/support": "~5.1"
+        "php": "^7.1",
+        "brozot/laravel-fcm": "~1.2.6",
+        "illuminate/notifications": "^5.8||^6.0",
+        "illuminate/queue": "^5.8||^6.0",
+        "illuminate/support": "^5.8||^6.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "~1.12.2",
-        "phpunit/phpunit": "4.*",
-        "mockery/mockery": "^1.0"
+        "friendsofphp/php-cs-fixer": "~2.16",
+        "phpunit/phpunit": "^7||^8",
+        "mockery/mockery": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "NotificationChannels\\FCM\\": "src",
+            "NotificationChannels\\FCM\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "NotificationChannels\\FCM\\Tests\\": "tests"
         }
     },
@@ -35,14 +45,18 @@
             "@phpcs",
             "@phpunit"
         ],
-        "phpcs": "php vendor/bin/php-cs-fixer --diff --dry-run -v fix",
-        "phpunit": "php vendor/bin/phpunit"
+        "phpcs": "vendor/bin/php-cs-fixer --diff --dry-run -v fix",
+        "phpunit": "vendor/bin/phpunit",
+        "coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
+        "laravel": {
+            "providers": [
+                "\\NotificationChannels\\FCM\\ServiceProvider"
+            ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
