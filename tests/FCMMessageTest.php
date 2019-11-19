@@ -3,15 +3,15 @@
 namespace NotificationChannels\FCM\Test;
 
 use LaravelFCM\Message\Options;
-use PHPUnit\Framework\TestCase;
-use LaravelFCM\Message\PayloadData;
 use LaravelFCM\Message\OptionsBuilder;
-use NotificationChannels\FCM\FCMMessage;
 use LaravelFCM\Message\OptionsPriorities;
+use LaravelFCM\Message\PayloadData;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotification;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use NotificationChannels\FCM\Exceptions\InvalidArgumentException;
+use NotificationChannels\FCM\FCMMessage;
+use PHPUnit\Framework\TestCase;
 
 class FCMMessageTest extends TestCase
 {

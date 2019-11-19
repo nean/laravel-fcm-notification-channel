@@ -4,9 +4,9 @@ namespace NotificationChannels\FCM;
 
 use Illuminate\Support\Arr;
 use LaravelFCM\Message\Options;
-use LaravelFCM\Message\PayloadData;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\OptionsPriorities;
+use LaravelFCM\Message\PayloadData;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotification;
 use LaravelFCM\Message\PayloadNotificationBuilder;
