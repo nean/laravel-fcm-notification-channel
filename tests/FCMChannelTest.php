@@ -2,17 +2,17 @@
 
 namespace NotificationChannels\FCM\Test;
 
-use Mockery;
-use PHPUnit\Framework\TestCase;
-use LaravelFCM\Sender\FCMSender;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
+use LaravelFCM\Response\DownstreamResponse;
+use LaravelFCM\Sender\FCMSender;
+use Mockery;
+use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
 use NotificationChannels\FCM\FCMChannel;
 use NotificationChannels\FCM\FCMMessage;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Events\Dispatcher;
-use LaravelFCM\Response\DownstreamResponse;
 use NotificationChannels\FCM\MessageWasSended;
-use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
+use PHPUnit\Framework\TestCase;
 
 class FCMChannelTest extends TestCase
 {
