@@ -3,6 +3,7 @@
 namespace NotificationChannels\FCM\Test;
 
 use Mockery;
+use PHPUnit\Framework\TestCase;
 use LaravelFCM\Sender\FCMSender;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Notifications\Notifiable;
@@ -13,16 +14,16 @@ use LaravelFCM\Response\DownstreamResponse;
 use NotificationChannels\FCM\MessageWasSended;
 use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
 
-class FCMChannelTest extends \PHPUnit_Framework_TestCase
+class FCMChannelTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         $this->sender = Mockery::mock(FCMSender::class);
         $this->events = Mockery::mock(Dispatcher::class);
         $this->channel = new FCMChannel($this->sender, $this->events);
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         Mockery::close();
         parent::tearDown();
@@ -61,7 +62,7 @@ class FCMChannelTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_throw_could_not_send_notification_exception()
     {
-        $this->setExpectedException(CouldNotSendNotification::class);
+        $this->expectException(CouldNotSendNotification::class);
         $notifiable = new TestNotifiableWithInvalidRecipient;
         $notification = new TestNotification;
         try {

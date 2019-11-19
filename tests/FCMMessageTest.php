@@ -3,6 +3,7 @@
 namespace NotificationChannels\FCM\Test;
 
 use LaravelFCM\Message\Options;
+use PHPUnit\Framework\TestCase;
 use LaravelFCM\Message\PayloadData;
 use LaravelFCM\Message\OptionsBuilder;
 use NotificationChannels\FCM\FCMMessage;
@@ -12,7 +13,7 @@ use LaravelFCM\Message\PayloadNotification;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use NotificationChannels\FCM\Exceptions\InvalidArgumentException;
 
-class FCMMessageTest extends \PHPUnit_Framework_TestCase
+class FCMMessageTest extends TestCase
 {
     /** @test */
     public function it_construct_with_options_from_builder()
@@ -115,7 +116,7 @@ class FCMMessageTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_construct_with_options_and_throw_exception()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         try {
             (new FCMMessage())->options('foo');
         } catch (InvalidArgumentException $e) {
@@ -206,7 +207,7 @@ class FCMMessageTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_construct_with_data_and_throw_exception()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         try {
             (new FCMMessage())->data('foo');
         } catch (InvalidArgumentException $e) {
@@ -350,7 +351,7 @@ class FCMMessageTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_construct_with_notification_and_throw_exception()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         try {
             (new FCMMessage())->notification('foo');
         } catch (InvalidArgumentException $e) {
