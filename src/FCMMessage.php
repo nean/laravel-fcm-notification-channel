@@ -244,7 +244,7 @@ class FCMMessage
         }
 
         return new InvalidArgumentException(
-           'The argument for %s::%s must be instanceof %s, %s, null or array. %s given.',
+            'The argument for %s::%s must be instanceof %s, %s, null or array. %s given.',
             [
                 self::class, $method, $container, $builder, $type,
             ]

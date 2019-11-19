@@ -69,8 +69,8 @@ class FCMChannelTest extends TestCase
             $this->channel->send($notifiable, $notification);
         } catch (CouldNotSendNotification $e) {
             $this->assertEquals(
-              'Notification was not sent. You should specify device token(s), topic(s) or group(s) for sending notification.',
-              $e->getMessage()
+                'Notification was not sent. You should specify device token(s), topic(s) or group(s) for sending notification.',
+                $e->getMessage()
             );
             throw $e;
         }

@@ -19,7 +19,7 @@ class FCMMessageTopic extends FCMMessage
             }
 
             return new InvalidArgumentException(
-               'The argument for %s::%s must be instanceof %s, null or array. %s given.',
+                'The argument for %s::%s must be instanceof %s, null or array. %s given.',
                 [
                     self::class, 'to', Topics::class, $type,
                 ]

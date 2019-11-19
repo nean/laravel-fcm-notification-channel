@@ -15,6 +15,7 @@ $config = PhpCsFixer\Config::create()
         'elseif' => true,
         'function_declaration' => true,
         'indentation_type' => true,
+        'ordered_imports' => true,
         'line_ending' => true,
         'lowercase_constants' => true,
         'lowercase_keywords' => true,
