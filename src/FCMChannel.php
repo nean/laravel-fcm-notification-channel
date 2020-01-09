@@ -43,15 +43,16 @@ class FCMChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        /** @var FCMMessage $message */
         $message = $notification->toFCM($notifiable);
+
         if ($message->recipientNotGiven()) {
             $to = $notifiable->routeNotificationFor('FCM');
-            if (is_array($to) && empty($to)) {
+
+            if ($to === null) {
                 return;
             }
-            if (! $to) {
-                throw CouldNotSendNotification::missingRecipient();
-            }
+
             $message->to($to);
         }
         $method = 'sendTo';
