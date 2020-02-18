@@ -1,26 +1,25 @@
 # FCM notification channel for Laravel 5.8+
 
-This package makes it easy to send notifications using [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) with Laravel 5.3.
+This package makes it easy to send notifications using [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) with Laravel 5.8 and above.
 This package is based on [brozot/laravel-fcm](https://github.com/brozot/Laravel-FCM), so please read that documentation for more information.
 
 ## Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Available message types](#available-message-types)
-    - [Available message methods](#available-message-methods)
+  - [Available message types](#available-message-types)
+  - [Available message methods](#available-message-methods)
 - [Testing](#testing)
 - [Credits](#credits)
 - [Support](#support)
 - [License](#license)
 
-
 ## Installation
 
 You can install this package via composer:
 
-``` bash
-composer require nean/laravel-fcm-notification-channel:1.*
+```bash
+composer require nean/laravel-fcm-notification-channel:^2
 ```
 
 ## Usage
@@ -64,6 +63,7 @@ In order for your notice to know who to send messages, you must add `routeNotifi
 - `notification()`: Notification content. `array` | `LaravelFCM\Message\PayloadNotification` | `LaravelFCM\Message\PayloadNotificationBuilder`
 
 ### Proxy methods. See [brozot/laravel-fcm](https://github.com/brozot/Laravel-FCM) for more information about this methods.
+
 - `setDryRun`
 - `setPriority`
 - `setTimeToLive`
@@ -109,7 +109,7 @@ In order for your notice to know who to send messages, you must add `routeNotifi
 
 ## Testing
 
-``` bash
+```bash
 $ composer test
 ```
 
