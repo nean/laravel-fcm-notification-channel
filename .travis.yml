@@ -5,7 +5,7 @@ os: linux
 php:
   - 7.2
   - 7.3
-  - 7.4snaphost
+  - 7.4
 
 env:
   - LARAVEL_VERSION=^5.8
