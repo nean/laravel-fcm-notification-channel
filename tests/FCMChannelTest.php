@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notification;
 use LaravelFCM\Response\DownstreamResponse;
 use LaravelFCM\Sender\FCMSender;
 use Mockery;
-use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
 use NotificationChannels\FCM\FCMChannel;
 use NotificationChannels\FCM\FCMMessage;
 use NotificationChannels\FCM\MessageWasSended;
@@ -57,23 +56,6 @@ class FCMChannelTest extends TestCase
         $this->events->shouldNotReceive('fire');
         $result = $this->channel->send($notifiable, $notification);
         $this->assertNull($result);
-    }
-
-    /** @test */
-    public function it_throw_could_not_send_notification_exception()
-    {
-        $this->expectException(CouldNotSendNotification::class);
-        $notifiable = new TestNotifiableWithInvalidRecipient;
-        $notification = new TestNotification;
-        try {
-            $this->channel->send($notifiable, $notification);
-        } catch (CouldNotSendNotification $e) {
-            $this->assertEquals(
-                'Notification was not sent. You should specify device token(s), topic(s) or group(s) for sending notification.',
-                $e->getMessage()
-            );
-            throw $e;
-        }
     }
 }
 

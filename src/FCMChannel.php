@@ -5,7 +5,6 @@ namespace NotificationChannels\FCM;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Notifications\Notification;
 use LaravelFCM\Sender\FCMSender;
-use NotificationChannels\FCM\Exceptions\CouldNotSendNotification;
 
 class FCMChannel
 {
@@ -49,8 +48,8 @@ class FCMChannel
         if ($message->recipientNotGiven()) {
             $to = $notifiable->routeNotificationFor('FCM');
 
-            if ($to === null) {
-                return;
+            if ($to === null || $to === []) {
+                return null;
             }
 
             $message->to($to);
